@@ -41,11 +41,16 @@ public class ArcanumJSONParser {
                 int found=0;
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
-                    m=name.matcher(inputLine);
+                    m=id.matcher(inputLine);
                     if (m.find()) {
                         System.out.println("Found " + ++found);
                         rss.add(res);
                         res=new Resource();
+                        res.setName(m.group(1));
+                        continue;
+                    }
+                    m=name.matcher(inputLine);
+                    if (m.find()) {
                         res.setName(m.group(1));
                         continue;
                     }
